@@ -10,7 +10,7 @@ export const GlobalStyles = createGlobalStyle`
         margin: 0;
     }
 
-    body {
+    html {
         font-family: "Montserrat", sans-serif;
     }
 `;

@@ -21,11 +21,14 @@
     "noEmit": true,
     "noImplicitAny": false,
     "allowJs": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": "src",
+    "strictBindCallApply": true
   },
   "include": [
+    "src",
     "./src/**/*"
-  ],
+, "src/setupTests.tsx"  ],
   "exclude": [
     "build"
   ]
