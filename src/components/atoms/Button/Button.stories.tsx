@@ -1,17 +1,17 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import {Button, ButtonProps} from './Button';
+import { Button, ButtonProps } from './Button';
 
 export default {
-    component: Button,
-    title: 'components/atoms/Button',
-    args: {
-        children: 'Sign in',
-    }
+  component: Button,
+  title: 'components/atoms/Button',
+  args: {
+    children: 'Sign in'
+  }
 };
 
 const Template: Story<ButtonProps> = (args) => <Button {...args} />;
-  
+
 export const Primary = Template.bind({});
 Primary.args = { isPrimary: true };
 
@@ -34,8 +34,3 @@ PrimaryRoundedBig.args = { isPrimary: true, isRounded: true, isBig: true };
 
 export const SecondaryRoundedBig = Template.bind({});
 SecondaryRoundedBig.args = { isRounded: true, isBig: true };
-
-
-
-
-
