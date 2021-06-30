@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { GlobalStyles } from '../assets/styles/GlobalStyles';
-import { theme } from '../assets/styles/theme';
+import { GlobalStyles } from 'assets/styles/GlobalStyles';
+import { theme } from 'assets/styles/theme';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-const Root: React.FC = () => {
+const Root: FC = () => {
   return (
-    <div className="App">
+    <Router>
       <ThemeProvider theme={theme}>
         <GlobalStyles />
-        <p>Siema</p>
+        <Switch>
+          <Route path="/" />
+          <Route path="/dashboard" />
+          <Route path="/add-user" />
+          <Route path="/login" />
+        </Switch>
       </ThemeProvider>
-    </div>
+    </Router>
   );
 };
 
