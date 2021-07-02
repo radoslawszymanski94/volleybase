@@ -5,12 +5,13 @@ export interface NavItemProps {
   children: string;
   path: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  theme: Object;
 }
 
-export const NavigationItem: React.FC<NavItemProps> = (props) => {
+export const NavigationItem: React.FC<NavItemProps> = ({ path, children }, props) => {
   return (
-    <StyledNavLink {...props} to={props.path} activeClassName="active">
-      {props.children}
+    <StyledNavLink {...props} to={path} activeClassName="active">
+      {children}
     </StyledNavLink>
   );
 };

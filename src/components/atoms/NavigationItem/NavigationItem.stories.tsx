@@ -8,9 +8,6 @@ export default {
   args: {
     children: 'Dashboard',
     path: '/'
-  },
-  backgrounds: {
-    default: 'black'
   }
 };
 

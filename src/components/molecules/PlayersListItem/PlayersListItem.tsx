@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import {
   StyledPlayersListItem,
   StyledParagraph,
@@ -12,8 +11,8 @@ export interface PlayersListItemProps {
   name: 'string';
   position: 'string';
   nationality: 'string';
-  isSelected: 'boolean';
-  //   onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  isSelected?: 'boolean';
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 export const PlayersListItem: React.FC<PlayersListItemProps> = ({ name, position, nationality, isSelected }, props) => {

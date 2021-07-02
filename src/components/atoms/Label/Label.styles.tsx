@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 export interface LabelProps {
   children: string;
+  theme: Object;
 }
 
 export const Label = styled.h1<LabelProps>`

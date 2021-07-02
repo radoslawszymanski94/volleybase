@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { PlayersListItemProps } from './PlayersListItem';
 
 const centeredFlex = `
 display: grid;
@@ -6,14 +7,14 @@ display: grid;
   align-items: center;
 `;
 
-export const StyledPlayersListItem = styled.div`
+export const StyledPlayersListItem = styled.div<PlayersListItemProps>`
   display: grid;
   grid-template-columns: 0.5fr 0.1fr 0.2fr 0.2fr;
-  height: 100%;
+  max-height: 100px;
+  width: 500px;
   font-size: ${({ theme }) => theme.fontSizes.l};
   border-bottom: 3px solid ${({ theme }) => theme.colors.lightGray};
   text-align: center;
-  width: 500px;
   cursor: pointer;
   transition: background-color 0.4s ease-in-out;
 

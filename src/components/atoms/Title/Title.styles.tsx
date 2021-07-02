@@ -7,6 +7,9 @@ export interface TitleProps {
 }
 
 export const Title = styled.h1<TitleProps>`
-  color: ${({ theme }) => theme.colors.gray};
+  color: ${({ theme }) => theme.colors.darkGray};
   font-size: ${({ theme, isBig }) => (isBig ? theme.fontSizes.xxl : theme.fontSizes.l)};
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 400;
 `;
