@@ -1,21 +1,26 @@
 import styled from 'styled-components';
+import { PlayerInfoItemProps } from './PlayerInfoItem';
 
-export const StyledPlayerInfoItem = styled.div`
+const evenParagraphs = `
+  width: 50%;
+  text-transform: capitalize;
+`;
+
+export const StyledPlayerInfoItem = styled.div<PlayerInfoItemProps>`
   display: flex;
-  border-top: 3px solid ${({ theme }) => theme.colors.lightGray};
+  min-width: 200px;
+  border-top: 3px solid ${({ theme }) => theme.colors.gray};
   font-size: ${({ theme }) => theme.colors.l};
-  width: 500px;
   text-align: center;
-  padding: 5px 0;
+  padding: 8px 0;
+  height: auto;
 `;
 
 export const StyledPlayerInfoLabel = styled.p`
-  width: 50%;
-  text-transform: capitalize;
+  ${evenParagraphs}
   font-weight: bold;
 `;
 
 export const StyledPlayerInfoValue = styled.p`
-  width: 50%;
-  text-transform: capitalize;
+  ${evenParagraphs}
 `;

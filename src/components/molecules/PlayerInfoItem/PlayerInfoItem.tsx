@@ -6,11 +6,11 @@ export interface PlayerInfoItemProps {
   value: string;
 }
 
-export const PlayerInfoItem: React.FC<PlayerInfoItemProps> = (props) => {
+export const PlayerInfoItem: React.FC<PlayerInfoItemProps> = ({ label, value }, props) => {
   return (
     <StyledPlayerInfoItem {...props}>
-      <StyledPlayerInfoLabel>{props.label}</StyledPlayerInfoLabel>
-      <StyledPlayerInfoValue>{props.value}</StyledPlayerInfoValue>
+      <StyledPlayerInfoLabel>{label}</StyledPlayerInfoLabel>
+      <StyledPlayerInfoValue>{value}</StyledPlayerInfoValue>
     </StyledPlayerInfoItem>
   );
 };
