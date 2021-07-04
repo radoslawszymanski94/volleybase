@@ -2,7 +2,7 @@ import React from 'react';
 import { StyledImage } from './PlayerImage.styles';
 
 interface PlayerImageProps {
-  src: 'string';
+  src: string;
 }
 
 const PlayerImage: React.FC<PlayerImageProps> = (props) => {

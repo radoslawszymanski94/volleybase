@@ -1,17 +1,17 @@
 import React from 'react';
-import { StyledNavLink } from './NavigationItem.styles';
+import { StyledNavLink, StyledNavListItem } from './NavigationItem.styles';
 
 export interface NavItemProps {
   children: string;
   path: string;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  theme: Object;
 }
 
-export const NavigationItem: React.FC<NavItemProps> = ({ path, children }, props) => {
+export const NavigationItem: React.FC<NavItemProps> = ({ path, children }) => {
   return (
-    <StyledNavLink {...props} to={path} activeClassName="active">
-      {children}
-    </StyledNavLink>
+    <StyledNavListItem>
+      <StyledNavLink to={path} activeClassName="active">
+        {children}
+      </StyledNavLink>
+    </StyledNavListItem>
   );
 };

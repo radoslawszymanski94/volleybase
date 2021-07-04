@@ -6,7 +6,7 @@ const evenParagraphs = `
   text-transform: capitalize;
 `;
 
-export const StyledPlayerInfoItem = styled.div<PlayerInfoItemProps>`
+export const StyledPlayerInfoItem = styled.div`
   display: flex;
   min-width: 200px;
   border-top: 3px solid ${({ theme }) => theme.colors.gray};
