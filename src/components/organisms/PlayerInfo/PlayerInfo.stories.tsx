@@ -3,7 +3,7 @@ import { PlayerInfo } from './PlayerInfo';
 
 export default {
   component: PlayerInfo,
-  title: 'components/molecules/PlayerInfo'
+  title: 'components/organisms/PlayerInfo'
 };
 
 const Template = (args) => <PlayerInfo {...args} />;

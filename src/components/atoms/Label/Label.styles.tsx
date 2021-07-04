@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 export interface LabelProps {
-  children: string;
-  theme: Object;
+  children?: string;
+  theme?: Object;
 }
 
 export const Label = styled.h1<LabelProps>`

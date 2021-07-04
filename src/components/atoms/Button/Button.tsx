@@ -7,7 +7,7 @@ export interface ButtonProps {
   isBig?: boolean;
   isRounded?: boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  theme: Object;
+  theme?: Object;
 }
 
 export const Button: React.FC<ButtonProps> = (props) => {

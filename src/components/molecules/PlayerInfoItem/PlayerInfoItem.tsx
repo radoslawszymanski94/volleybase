@@ -6,9 +6,9 @@ export interface PlayerInfoItemProps {
   value: string;
 }
 
-export const PlayerInfoItem: React.FC<PlayerInfoItemProps> = ({ label, value }, props) => {
+export const PlayerInfoItem: React.FC<PlayerInfoItemProps> = ({ label, value }) => {
   return (
-    <StyledPlayerInfoItem {...props}>
+    <StyledPlayerInfoItem>
       <StyledPlayerInfoLabel>{label}</StyledPlayerInfoLabel>
       <StyledPlayerInfoValue>{value}</StyledPlayerInfoValue>
     </StyledPlayerInfoItem>
