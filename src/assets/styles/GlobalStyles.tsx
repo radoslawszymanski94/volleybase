@@ -10,7 +10,17 @@ export const GlobalStyles = createGlobalStyle`
         margin: 0;
     }
 
-    html {
+    #root {
+        height: 100vh;
+    }
+
+    .ant-pagination {
+        display: flex;
+        justify-content: center;
+    }
+
+    .ant-layout {
+        height: 100vh;
         font-family: "Montserrat", sans-serif;
     }
 `;

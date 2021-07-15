@@ -10,8 +10,6 @@ display: grid;
 export const StyledPlayersListItem = styled.div<PlayersListItemProps>`
   display: grid;
   grid-template-columns: 0.5fr 0.1fr 0.2fr 0.2fr;
-  max-height: 100px;
-  width: 500px;
   font-size: ${({ theme }) => theme.fontSizes.l};
   border-bottom: 3px solid ${({ theme }) => theme.colors.lightGray};
   text-align: center;
@@ -40,7 +38,7 @@ export const StyledSelectedIcon = styled.div`
   ${centeredFlex}
 
   img {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
   }
 `;

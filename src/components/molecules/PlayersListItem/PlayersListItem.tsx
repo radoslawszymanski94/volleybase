@@ -8,10 +8,10 @@ import {
 import { activeIcon } from 'assets/images/base64icons';
 
 export interface PlayersListItemProps {
-  name: 'string';
-  position: 'string';
-  nationality: 'string';
-  isSelected?: 'boolean';
+  name: string;
+  position: string;
+  nationality: string;
+  isSelected?: boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 

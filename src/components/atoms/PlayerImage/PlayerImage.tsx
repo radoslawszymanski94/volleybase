@@ -1,12 +1,21 @@
 import React from 'react';
-import { StyledImage } from './PlayerImage.styles';
 
 interface PlayerImageProps {
-  src: string;
+  img?: string;
 }
 
-const PlayerImage: React.FC<PlayerImageProps> = (props) => {
-  return <StyledImage alt="Player image" {...props} />;
+const PlayerImage: React.FC<PlayerImageProps> = ({ img }) => {
+  return (
+    <div
+      style={{
+        backgroundImage: `url(${img})`,
+        backgroundSize: 'contain',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        margin: '10px 0'
+      }}
+    />
+  );
 };
 
 export default PlayerImage;

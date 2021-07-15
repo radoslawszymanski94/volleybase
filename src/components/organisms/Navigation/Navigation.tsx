@@ -1,21 +1,27 @@
 import React from 'react';
-import { StyledNav, StyledNavList, StyledNavButton } from './Navigation.styles';
-import { Button } from 'components/atoms/Button/Button';
-import { NavigationItem } from 'components/atoms/NavigationItem/NavigationItem';
+import { Layout, Menu, Button } from 'antd';
+import { NavLink } from 'react-router-dom';
+import { StyledButtonWrapper, StyledHeader } from './Navigation.styles';
+
+const { Header } = Layout;
 
 const Navigation: React.FC = () => {
+  const onSearch = (value) => console.log(value);
+
   return (
-    <StyledNav>
-      <StyledNavList>
-        <NavigationItem path="/">Dashboard</NavigationItem>
-        <NavigationItem path="/add-user">Add user</NavigationItem>
-      </StyledNavList>
-      <StyledNavButton>
-        <Button isPrimary isBig isRounded>
-          Log in
-        </Button>
-      </StyledNavButton>
-    </StyledNav>
+    <StyledHeader>
+      <Menu mode="horizontal" defaultSelectedKeys={['2']}>
+        <NavLink to="/">
+          <Menu.Item>Dashboard</Menu.Item>
+        </NavLink>
+        <NavLink to="/add-user">
+          <Menu.Item>Add user</Menu.Item>
+        </NavLink>
+        <StyledButtonWrapper className="logo">
+          <Button>Log in</Button>
+        </StyledButtonWrapper>
+      </Menu>
+    </StyledHeader>
   );
 };
 

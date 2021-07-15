@@ -1,12 +1,10 @@
 import styled from 'styled-components';
+import { Layout } from 'antd';
 
-export const StyledWrapper = styled.div`
-  background-color: ${({ theme }) => theme.colors.backgroundGray};
-  height: 100vh;
-`;
+const { Content } = Layout;
 
-export const StyledContentWrapper = styled.div`
-  padding: 0 50px;
-  width: 80%;
-  margin: 0 auto;
+export const StyledContentWrapper = styled(Content)`
+  padding: 50px;
+  max-width: 1240px;
+  height: 100%;
 `;

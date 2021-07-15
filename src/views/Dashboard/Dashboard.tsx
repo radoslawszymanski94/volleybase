@@ -1,30 +1,29 @@
+import Player from 'components/organisms/Player/Player';
 import React from 'react';
-import { StyledWrapper } from './Dashboard.styles';
-import { PlayerInfo } from 'components/organisms/PlayerInfo/PlayerInfo';
-import SearchBar from 'components/organisms/SearchBar/SearchBar';
-import styled from 'styled-components';
-import { Title } from 'components/atoms/Title/Title.styles';
-import { RoundedWrapper } from 'components/atoms/Wrapper/Wrapper.styles';
+import { StyledDashboard } from './Dashboard.styles';
 
-export const StyledPlayersListWrapper = styled.div`
-  display: grid;
-  grid-template-rows: 0.1fr 0.2fr 0.7fr;
-  min-width: 400px;
-  height: 100%;
-  margin: 0 auto;
-  padding: 15px 0;
-`;
+const data = {
+  name: 'Bartosz Kurek',
+  nationality: 'Poland',
+  position: 'Outside hitter',
+  age: 32,
+  club: 'Wolf Dogs Nagoya'
+};
 
 const Dashboard: React.FC = () => {
+  const { name, nationality, position, age, club } = data;
   return (
-    <StyledWrapper>
-      <PlayerInfo />
-      <StyledPlayersListWrapper>
-        <Title isBig>Find player</Title>
-        <SearchBar />
-        <RoundedWrapper />
-      </StyledPlayersListWrapper>
-    </StyledWrapper>
+    <StyledDashboard>
+      <Player
+        name={name}
+        nationality={nationality}
+        postition={position}
+        age={age}
+        club={club}
+        img={'https://dl.siatkarskaliga.pl/294106/inline/scalecrop=400x800/82f504/12-kurek.png'}
+      />
+      <Player />
+    </StyledDashboard>
   );
 };
 

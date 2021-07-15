@@ -1,6 +1,8 @@
 import React from 'react';
+import { Layout, Menu, Button } from 'antd';
+import { StyledContentWrapper } from './MainTemplate.styles';
+import { Footer } from 'components/molecules/Footer/Footer';
 import Navigation from 'components/organisms/Navigation/Navigation';
-import { StyledWrapper, StyledContentWrapper } from './MainTemplate.styles';
 
 export interface MainTemplateProps {
   children: React.ReactNode;
@@ -8,10 +10,11 @@ export interface MainTemplateProps {
 
 const MainTemplate: React.FC<MainTemplateProps> = ({ children }) => {
   return (
-    <StyledWrapper>
+    <Layout>
       <Navigation />
       <StyledContentWrapper>{children}</StyledContentWrapper>
-    </StyledWrapper>
+      <Footer>VolleyBase ©2021 Created by Radosław Szymański</Footer>
+    </Layout>
   );
 };
 
