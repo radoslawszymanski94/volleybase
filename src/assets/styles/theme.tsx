@@ -4,6 +4,7 @@ export const theme = {
     hoverGray: '#697179',
     lightGray: '#f3f3f3',
     mint: '#62C7CD',
+    mintHover: '#54abaf',
     white: '#FFFFFF',
     black: '#000000'
   },

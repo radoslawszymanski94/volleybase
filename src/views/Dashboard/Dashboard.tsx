@@ -1,6 +1,8 @@
 import Player from 'components/organisms/Player/Player';
+import Search from 'components/organisms/Search/Search';
+import SearchList from 'components/organisms/SearchList/SearchList';
 import React from 'react';
-import { StyledDashboard } from './Dashboard.styles';
+import { StyledDashboard, StyledSearchWrapper } from './Dashboard.styles';
 
 const data = {
   name: 'Bartosz Kurek',
@@ -20,9 +22,12 @@ const Dashboard: React.FC = () => {
         postition={position}
         age={age}
         club={club}
-        img={'https://dl.siatkarskaliga.pl/294106/inline/scalecrop=400x800/82f504/12-kurek.png'}
+        playerImg="https://dl.siatkarskaliga.pl/294106/inline/scalecrop=400x800/82f504/12-kurek.png"
       />
-      <Player />
+      <StyledSearchWrapper>
+        <Search />
+        <SearchList />
+      </StyledSearchWrapper>
     </StyledDashboard>
   );
 };

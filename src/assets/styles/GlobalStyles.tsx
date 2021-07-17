@@ -1,8 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-
 
     *, *::before, *::after {
         box-sizing: border-box;
@@ -11,7 +9,8 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     #root {
-        height: 100vh;
+        height:100%;
+        font-family: 'Montserrat', sans-serif;
     }
 
     .ant-pagination {
@@ -19,8 +18,23 @@ export const GlobalStyles = createGlobalStyle`
         justify-content: center;
     }
 
-    .ant-layout {
-        height: 100vh;
-        font-family: "Montserrat", sans-serif;
+    .ant-card-body .ant-input-search .ant-input-group .ant-input-affix-wrapper {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
     }
+
+    .ant-input-search > .ant-input-group > .ant-input-group-addon:last-child .ant-input-search-button {
+        border-radius: 0 10px 10px 0;
+    }
+
+    .ant-layout {
+        min-height: 100vh;
+
+        .ant-table table{
+
+            border-radius: 20px;
+    }
+    }
+
+    
 `;
