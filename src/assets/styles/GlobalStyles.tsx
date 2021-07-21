@@ -19,12 +19,12 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     .ant-card-body .ant-input-search .ant-input-group .ant-input-affix-wrapper {
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
     }
 
     .ant-input-search > .ant-input-group > .ant-input-group-addon:last-child .ant-input-search-button {
-        border-radius: 0 10px 10px 0;
+        border-radius: 0 5px 5px 0;
     }
 
     .ant-layout {
@@ -36,5 +36,8 @@ export const GlobalStyles = createGlobalStyle`
     }
     }
 
-    
+    .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item:hover::after, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu:hover::after, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-active::after, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-active::after, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-open::after, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-open::after, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-selected::after, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-selected::after {
+        border-bottom: none;
+        color: transparent;
+    }
 `;

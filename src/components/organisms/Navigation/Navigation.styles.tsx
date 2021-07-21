@@ -3,7 +3,7 @@ import { Layout, Menu, Button } from 'antd';
 const { Header } = Layout;
 
 export const StyledButtonWrapper = styled.div`
-  align-self: flex-end;
+  order: 100;
 `;
 
 export const StyledHeader = styled(Header)`
@@ -13,6 +13,25 @@ export const StyledHeader = styled(Header)`
     background-color: ${({ theme }) => theme.colors.darkGray};
     font-weight: 500;
     font-size: ${({ theme }) => theme.fontSizes.m};
+    display: flex;
+
+    .ant-menu-item-selected {
+      border-bottom: none;
+    }
+
+    .ant-menu-item {
+      a {
+        color: #fff;
+      }
+
+      &:hover {
+        background-color: ${({ theme }) => theme.colors.hoverGray};
+      }
+
+      .active {
+        border-bottom: 2px solid ${({ theme }) => theme.colors.mint};
+      }
+    }
 
     .logo {
       margin-left: auto;
@@ -25,27 +44,12 @@ export const StyledHeader = styled(Header)`
         outline: none;
         text-transform: uppercase;
         font-weight: 500;
-        border-radius: 10px;
+        border-radius: 5px;
 
         &:hover {
           background-color: ${({ theme }) => theme.colors.mintHover};
         }
       }
-    }
-  }
-
-  .ant-menu-item {
-    color: ${({ theme }) => theme.colors.white};
-  }
-
-  .ant-menu-item:hover {
-    background-color: ${({ theme }) => theme.colors.hoverGray};
-    color: ${({ theme }) => theme.colors.white};
-  }
-
-  .ant-menu-item-active {
-    span {
-      border-bottom: 3px solid ${({ theme }) => theme.colors.mint};
     }
   }
 `;
