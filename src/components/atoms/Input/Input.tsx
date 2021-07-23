@@ -6,6 +6,7 @@ export interface InputProps {
   placeholder?: string;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
   type: string;
+  name: string;
 }
 
 export const Input: React.FC<InputProps> = (props) => {
