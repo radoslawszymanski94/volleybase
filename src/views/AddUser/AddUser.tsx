@@ -1,49 +1,16 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Formik, Form, Field } from 'formik';
-import { StyledPlayerInfoCard } from 'components/organisms/Player/Player.styles';
+import { StyledForm } from './AddUser.styles';
 import { Input } from 'components/atoms/Input/Input';
 import { Button } from 'antd';
 import { success, error } from 'helpers/messages';
 import axios from 'axios';
 import { baseURL } from 'api';
 import * as Yup from 'yup';
+import UnauthenticatedApp from 'views/UnauthenticatedApp/UnauthenticatedApp';
+import { useAuth } from 'auth/AuthProvider';
 
-const StyledForm = styled(StyledPlayerInfoCard)`
-  display: block;
-  width: 50%;
-  margin: 0 auto;
-
-  form {
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    margin: 0 auto;
-  }
-
-  input {
-    margin: 20px 0;
-  }
-
-  button {
-    background-color: ${({ theme }) => theme.colors.mint};
-    color: ${({ theme }) => theme.colors.white};
-    border: none;
-    outline: none;
-    text-transform: uppercase;
-    font-weight: 500;
-    border-radius: 5px;
-    margin: 20px 0;
-    cursor: pointer;
-
-    &:hover {
-      background-color: ${({ theme }) => theme.colors.mintHover};
-      color: ${({ theme }) => theme.colors.white};
-    }
-  }
-`;
-
-const SignupSchema = Yup.object().shape({
+const AddPlayerSchema = Yup.object().shape({
   name: Yup.string().min(2, 'Name is too short!').max(100, 'Name is too long!').required('Player name is required'),
   nationality: Yup.string()
     .min(2, 'Nationality is too short!')
@@ -62,7 +29,8 @@ const SignupSchema = Yup.object().shape({
 });
 
 const AddUser: React.FC = () => {
-  return (
+  const { authenticated } = useAuth();
+  return authenticated ? (
     <StyledForm title="Add player">
       <Formik
         initialValues={{
@@ -79,7 +47,7 @@ const AddUser: React.FC = () => {
             .then(() => success(`Player ${values.name} added succesfully`))
             .then(() => resetForm({}));
         }}
-        validationSchema={SignupSchema}
+        validationSchema={AddPlayerSchema}
       >
         {({ touched, errors }) => (
           <Form>
@@ -100,6 +68,8 @@ const AddUser: React.FC = () => {
         )}
       </Formik>
     </StyledForm>
+  ) : (
+    <UnauthenticatedApp />
   );
 };
 
