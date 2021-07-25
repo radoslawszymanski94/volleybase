@@ -15,9 +15,9 @@ const Root: FC = () => {
         <GlobalStyles />
         <MainTemplate>
           <Switch>
+            <Route exact path="/" component={Dashboard} />
             <Route path="/add-user" component={AddUser} />
             <Route path="/login" component={Login} />
-            <Route path="/" component={Dashboard} exact />
           </Switch>
         </MainTemplate>
       </ThemeProvider>

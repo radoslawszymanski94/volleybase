@@ -6,3 +6,9 @@ export const StyledDashboard = styled.div`
   grid-column-gap: 40px;
   height: 100%;
 `;
+
+export const StyledSearchWrapper = styled.div`
+  display: grid;
+  grid-row-gap: 40px;
+  height: 100%;
+`;

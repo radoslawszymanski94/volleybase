@@ -1,22 +1,18 @@
 import React from 'react';
-import { Layout, Menu, Button } from 'antd';
+import { Menu, Button } from 'antd';
 import { NavLink } from 'react-router-dom';
 import { StyledButtonWrapper, StyledHeader } from './Navigation.styles';
 
-const { Header } = Layout;
-
 const Navigation: React.FC = () => {
-  const onSearch = (value) => console.log(value);
-
   return (
     <StyledHeader>
-      <Menu mode="horizontal" defaultSelectedKeys={['2']}>
-        <NavLink to="/">
-          <Menu.Item>Dashboard</Menu.Item>
-        </NavLink>
-        <NavLink to="/add-user">
-          <Menu.Item>Add user</Menu.Item>
-        </NavLink>
+      <Menu mode="horizontal">
+        <Menu.Item key={'/'}>
+          <NavLink to="/">Dashboard</NavLink>
+        </Menu.Item>
+        <Menu.Item key={'/add'}>
+          <NavLink to="/add-user">Add user</NavLink>
+        </Menu.Item>
         <StyledButtonWrapper className="logo">
           <Button>Log in</Button>
         </StyledButtonWrapper>
