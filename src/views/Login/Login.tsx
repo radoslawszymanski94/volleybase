@@ -1,22 +1,18 @@
-import React, { useContext } from 'react';
-import styled from 'styled-components';
-import { Formik, Form, Field } from 'formik';
-import { StyledForm } from 'views/AddUser/AddUser.styles';
-import { Input } from 'components/atoms/Input/Input';
+import React from 'react';
 import { Button } from 'antd';
 import * as Yup from 'yup';
+import { Formik, Form, Field } from 'formik';
+import { Link } from 'react-router-dom';
+import { Input } from 'components/atoms/Input/Input';
 import { useAuth } from 'auth/AuthProvider';
+import { StyledLoginForm, StyledParagraph } from './Login.styles';
+import { loginNoAccount, loginSuccess, serverError, validationMessages } from 'assets/constans';
 
-export const StyledLoginForm = styled(StyledForm)`
-  width: 40%;
-`;
+const { email, password } = validationMessages;
 
 const LoginSchema = Yup.object().shape({
-  email: Yup.string().min(2, 'Email is too short!').max(100, 'Email is too long!').required('Email is required'),
-  password: Yup.string()
-    .min(2, 'Password is too short!')
-    .max(25, 'Password is too long!')
-    .required('Password is required')
+  email: Yup.string().min(2, email.min).max(100, email.max).required(email.required),
+  password: Yup.string().min(2, password.min).max(25, password.max).required(password.required)
 });
 
 const Login: React.FC = () => {
@@ -30,7 +26,7 @@ const Login: React.FC = () => {
         }}
         onSubmit={(values) => {
           const { email, password } = values;
-          signIn(email, password);
+          signIn(email, password, loginSuccess, serverError);
         }}
         validationSchema={LoginSchema}
       >
@@ -40,6 +36,10 @@ const Login: React.FC = () => {
             {errors.email && touched.email ? <div>{errors.email}</div> : null}
             <Field as={Input} type="password" name="password" placeholder="Enter password" isRounded />
             {errors.password && touched.password ? <div>{errors.password}</div> : null}
+            <StyledParagraph>
+              {loginNoAccount}
+              <Link to="/signup"> here</Link>.
+            </StyledParagraph>
             <Button htmlType="submit">Log in</Button>
           </Form>
         )}

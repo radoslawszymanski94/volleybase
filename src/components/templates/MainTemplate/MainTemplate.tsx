@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Menu, Button } from 'antd';
+import { Layout } from 'antd';
 import { StyledContentWrapper } from './MainTemplate.styles';
 import { Footer } from 'components/molecules/Footer/Footer';
 import Navigation from 'components/organisms/Navigation/Navigation';

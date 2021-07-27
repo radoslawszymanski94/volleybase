@@ -1,31 +1,25 @@
 import React from 'react';
+import axios from 'axios';
+import { Button } from 'antd';
+import { Input } from 'components/atoms/Input/Input';
 import { Formik, Form, Field } from 'formik';
 import { StyledForm } from './AddUser.styles';
-import { Input } from 'components/atoms/Input/Input';
-import { Button } from 'antd';
 import { success, error } from 'helpers/messages';
-import axios from 'axios';
+import { addPlayerSuccess, serverError, validationMessages } from 'assets/constans';
 import { baseURL } from 'api';
 import * as Yup from 'yup';
 import UnauthenticatedApp from 'views/UnauthenticatedApp/UnauthenticatedApp';
 import { useAuth } from 'auth/AuthProvider';
 
+const { name, nationality, position, age, club, playerImage } = validationMessages;
+
 const AddPlayerSchema = Yup.object().shape({
-  name: Yup.string().min(2, 'Name is too short!').max(100, 'Name is too long!').required('Player name is required'),
-  nationality: Yup.string()
-    .min(2, 'Nationality is too short!')
-    .max(100, 'Nationality is too long!')
-    .required('Nationality is required'),
-  position: Yup.string()
-    .min(2, 'Position name is too short!')
-    .max(100, 'Position name is too long!')
-    .required('Position is required'),
-  age: Yup.number().min(10, 'Age is too small!').max(100, 'Age is too big!').required('Required'),
-  club: Yup.string()
-    .min(2, 'Name of the club is too short!')
-    .max(100, 'Name of the club is too long!')
-    .required('Required'),
-  playerImage: Yup.string().min(2, 'Link is too short!').max(1000, 'Link is too long!')
+  name: Yup.string().min(2, name.min).max(100, name.max).required(name.required),
+  nationality: Yup.string().min(2, nationality.min).max(100, nationality.max).required(nationality.required),
+  position: Yup.string().min(2, position.min).max(100, position.max).required(position.required),
+  age: Yup.number().min(10, age.min).max(100, age.max).required(age.required),
+  club: Yup.string().min(2, club.min).max(100, club.max).required(club.required),
+  playerImage: Yup.string().min(2, playerImage.min).max(1000, playerImage.max)
 });
 
 const AddUser: React.FC = () => {
@@ -44,8 +38,9 @@ const AddUser: React.FC = () => {
         onSubmit={(values, { resetForm }) => {
           axios
             .post(`${baseURL}players.json`, values)
-            .then(() => success(`Player ${values.name} added succesfully`))
-            .then(() => resetForm({}));
+            .then(() => resetForm({}))
+            .then(() => success(addPlayerSuccess(values.name)))
+            .catch(() => error(serverError));
         }}
         validationSchema={AddPlayerSchema}
       >
