@@ -1,20 +1,32 @@
 import React from 'react';
-import { Menu, Button } from 'antd';
-import { NavLink } from 'react-router-dom';
+import { Menu } from 'antd';
+import { NavLink, Link } from 'react-router-dom';
+import { Button } from 'components/atoms/Button/Button';
 import { StyledButtonWrapper, StyledHeader } from './Navigation.styles';
+import { useAuth } from 'auth/AuthProvider';
+import { signoutError, signoutSuccess } from 'assets/constans';
 
 const Navigation: React.FC = () => {
+  const { authenticated, signOut } = useAuth();
   return (
     <StyledHeader>
       <Menu mode="horizontal">
-        <Menu.Item key={'/'}>
+        <Menu.Item key={'dashboard'}>
           <NavLink to="/">Dashboard</NavLink>
         </Menu.Item>
-        <Menu.Item key={'/add'}>
-          <NavLink to="/add-user">Add user</NavLink>
-        </Menu.Item>
+        {authenticated ? (
+          <Menu.Item key={'addUser'}>
+            <NavLink to="/add">Add user</NavLink>
+          </Menu.Item>
+        ) : null}
         <StyledButtonWrapper className="logo">
-          <Button>Log in</Button>
+          {authenticated ? (
+            <Link as={Button} onClick={() => signOut(signoutSuccess, signoutError)}>
+              Logout
+            </Link>
+          ) : (
+            <Link to="/login">Log in</Link>
+          )}
         </StyledButtonWrapper>
       </Menu>
     </StyledHeader>

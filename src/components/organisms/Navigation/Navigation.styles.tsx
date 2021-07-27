@@ -28,8 +28,10 @@ export const StyledHeader = styled(Header)`
         background-color: ${({ theme }) => theme.colors.hoverGray};
       }
 
-      .active {
-        border-bottom: 2px solid ${({ theme }) => theme.colors.mint};
+      &-selected {
+        a {
+          border-bottom: 2px solid ${({ theme }) => theme.colors.mint};
+        }
       }
     }
 
@@ -37,14 +39,15 @@ export const StyledHeader = styled(Header)`
       margin-left: auto;
       padding-right: 20px;
 
-      button {
+      a {
         background-color: ${({ theme }) => theme.colors.mint};
         color: ${({ theme }) => theme.colors.white};
         border: none;
         outline: none;
         text-transform: uppercase;
-        font-weight: 500;
         border-radius: 5px;
+        padding: 5px 12px;
+        transition: background-color 0.3s;
 
         &:hover {
           background-color: ${({ theme }) => theme.colors.mintHover};
