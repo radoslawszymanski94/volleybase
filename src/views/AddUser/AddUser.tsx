@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { FC } from 'react';
 import axios from 'axios';
+import * as Yup from 'yup';
 import { Button } from 'antd';
-import { Input } from 'components/atoms/Input/Input';
 import { Formik, Form, Field } from 'formik';
+import { Input } from 'components/atoms/Input/Input';
 import { StyledForm } from './AddUser.styles';
 import { success, error } from 'helpers/messages';
 import { addPlayerSuccess, serverError, validationMessages } from 'assets/constans';
 import { baseURL } from 'api';
-import * as Yup from 'yup';
 import UnauthenticatedApp from 'views/UnauthenticatedApp/UnauthenticatedApp';
 import { useAuth } from 'auth/AuthProvider';
 
@@ -22,7 +22,7 @@ const AddPlayerSchema = Yup.object().shape({
   playerImage: Yup.string().min(2, playerImage.min).max(1000, playerImage.max)
 });
 
-const AddUser: React.FC = () => {
+const AddUser: FC = () => {
   const { authenticated } = useAuth();
   return authenticated ? (
     <StyledForm title="Add player">

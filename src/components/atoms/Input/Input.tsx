@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { StyledInput } from './Input.styles';
 
 export interface InputProps {
@@ -7,8 +7,9 @@ export interface InputProps {
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
   type: string;
   name: string;
+  theme?: Object;
 }
 
-export const Input: React.FC<InputProps> = (props) => {
+export const Input: FC<InputProps> = (props) => {
   return <StyledInput {...props} />;
 };

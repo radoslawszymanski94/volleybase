@@ -1,19 +1,20 @@
-import React from 'react';
+import React, { ReactNode, FC } from 'react';
 import { Layout } from 'antd';
 import { StyledContentWrapper } from './MainTemplate.styles';
 import { Footer } from 'components/molecules/Footer/Footer';
 import Navigation from 'components/organisms/Navigation/Navigation';
+import { footerText } from 'assets/constans';
 
 export interface MainTemplateProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
-const MainTemplate: React.FC<MainTemplateProps> = ({ children }) => {
+const MainTemplate: FC<MainTemplateProps> = ({ children }) => {
   return (
     <Layout>
       <Navigation />
       <StyledContentWrapper>{children}</StyledContentWrapper>
-      <Footer>VolleyBase ©2021 Created by Radosław Szymański</Footer>
+      <Footer>{footerText}</Footer>
     </Layout>
   );
 };
