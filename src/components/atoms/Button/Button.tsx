@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { StyledButton } from './Button.styles';
 
 export interface ButtonProps {
@@ -10,6 +10,6 @@ export interface ButtonProps {
   theme?: Object;
 }
 
-export const Button: React.FC<ButtonProps> = (props) => {
-  return <StyledButton {...props}>{props.children}</StyledButton>;
+export const Button: FC<ButtonProps> = (props, { children }) => {
+  return <StyledButton {...props}>{children}</StyledButton>;
 };

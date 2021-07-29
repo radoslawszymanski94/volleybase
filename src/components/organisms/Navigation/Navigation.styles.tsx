@@ -1,12 +1,9 @@
 import styled from 'styled-components';
-import { Layout, Menu, Button } from 'antd';
+import { Layout } from 'antd';
 const { Header } = Layout;
+import { NavigationProps } from './Navigation';
 
-export const StyledButtonWrapper = styled.div`
-  order: 100;
-`;
-
-export const StyledHeader = styled(Header)`
+export const StyledHeader = styled(Header)<NavigationProps>`
   background-color: ${({ theme }) => theme.colors.darkGray};
 
   .ant-menu {
@@ -28,10 +25,8 @@ export const StyledHeader = styled(Header)`
         background-color: ${({ theme }) => theme.colors.hoverGray};
       }
 
-      &-selected {
-        a {
-          border-bottom: 2px solid ${({ theme }) => theme.colors.mint};
-        }
+      .active {
+        border-bottom: 2px solid ${({ theme }) => theme.colors.mint};
       }
     }
 
@@ -39,6 +34,7 @@ export const StyledHeader = styled(Header)`
       margin-left: auto;
       padding-right: 20px;
 
+      button,
       a {
         background-color: ${({ theme }) => theme.colors.mint};
         color: ${({ theme }) => theme.colors.white};
@@ -55,4 +51,8 @@ export const StyledHeader = styled(Header)`
       }
     }
   }
+`;
+
+export const StyledButtonWrapper = styled.div`
+  order: 100;
 `;

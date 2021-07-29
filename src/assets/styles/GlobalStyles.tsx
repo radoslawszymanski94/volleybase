@@ -40,4 +40,11 @@ export const GlobalStyles = createGlobalStyle`
         border-bottom: none;
         color: transparent;
     }
+
+    .ant-btn {
+        &:focus {
+            background-color: #54abaf;
+            color: #fff;
+        }
+    }
 `;

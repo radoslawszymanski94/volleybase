@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Button } from 'antd';
 import * as Yup from 'yup';
 import { Formik, Form, Field } from 'formik';
@@ -15,7 +15,7 @@ const LoginSchema = Yup.object().shape({
   password: Yup.string().min(2, password.min).max(25, password.max).required(password.required)
 });
 
-const Login: React.FC = () => {
+const Login: FC = () => {
   const { signIn } = useAuth();
   return (
     <StyledLoginForm title="Log in">
