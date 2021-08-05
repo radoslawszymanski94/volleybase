@@ -9,6 +9,7 @@ import AddUser from 'views/AddUser/AddUser';
 import Login from 'views/Login/Login';
 import Signup from 'views/Signup/Signup';
 import { AuthProvider } from 'auth/AuthProvider';
+import AuthenticatedApp from 'views/AuthenticatedApp/AuthenticatedApp';
 
 const Root: FC = () => {
   return (
@@ -21,7 +22,9 @@ const Root: FC = () => {
               <Route exact path="/" component={Dashboard} />
               <Route path="/login" component={Login} />
               <Route path="/signup" component={Signup} />
-              <Route path="/add" component={AddUser} />
+              <AuthenticatedApp>
+                <Route path="/add" component={AddUser} />
+              </AuthenticatedApp>
             </Switch>
           </MainTemplate>
         </ThemeProvider>
