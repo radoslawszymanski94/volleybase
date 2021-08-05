@@ -10,6 +10,6 @@ export interface ButtonProps {
   theme?: Object;
 }
 
-export const Button: FC<ButtonProps> = (props, { children }) => {
-  return <StyledButton {...props}>{children}</StyledButton>;
+export const Button: FC<ButtonProps> = (props) => {
+  return <StyledButton {...props}>{props.children}</StyledButton>;
 };

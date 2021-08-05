@@ -8,8 +8,10 @@ import { StyledForm } from './AddUser.styles';
 import { success, error } from 'helpers/messages';
 import { addPlayerSuccess, serverError, validationMessages } from 'assets/constans';
 import { baseURL } from 'api';
-import UnauthenticatedApp from 'views/UnauthenticatedApp/UnauthenticatedApp';
-import { useAuth } from 'auth/AuthProvider';
+
+interface AddPlayerProps {
+  onSubmit?: Function;
+}
 
 const { name, nationality, position, age, club, playerImage } = validationMessages;
 
@@ -19,12 +21,20 @@ const AddPlayerSchema = Yup.object().shape({
   position: Yup.string().min(2, position.min).max(100, position.max).required(position.required),
   age: Yup.number().min(10, age.min).max(100, age.max).required(age.required),
   club: Yup.string().min(2, club.min).max(100, club.max).required(club.required),
-  playerImage: Yup.string().min(2, playerImage.min).max(1000, playerImage.max)
+  playerImage: Yup.string().min(2, playerImage.min).max(500, playerImage.max)
 });
 
-const AddUser: FC = () => {
-  const { authenticated } = useAuth();
-  return authenticated ? (
+const AddUser: FC<AddPlayerProps> = ({ onSubmit }) => {
+  const handleSubmit = async (values, { resetForm }) => {
+    onSubmit
+      ? onSubmit(values)
+      : await axios
+          .post(`${baseURL}players.json`, values)
+          .then(() => resetForm({}))
+          .then(() => success(addPlayerSuccess(values.name)))
+          .catch(() => error(serverError));
+  };
+  return (
     <StyledForm title="Add player">
       <Formik
         initialValues={{
@@ -35,13 +45,7 @@ const AddUser: FC = () => {
           club: '',
           playerImage: ''
         }}
-        onSubmit={(values, { resetForm }) => {
-          axios
-            .post(`${baseURL}players.json`, values)
-            .then(() => resetForm({}))
-            .then(() => success(addPlayerSuccess(values.name)))
-            .catch(() => error(serverError));
-        }}
+        onSubmit={handleSubmit}
         validationSchema={AddPlayerSchema}
       >
         {({ touched, errors }) => (
@@ -52,19 +56,19 @@ const AddUser: FC = () => {
             {errors.nationality && touched.nationality ? <div>{errors.nationality}</div> : null}
             <Field as={Input} type="text" name="position" placeholder="Enter player's position" isRounded />
             {errors.position && touched.position ? <div>{errors.position}</div> : null}
-            <Field as={Input} type="number" name="age" isRounded />
+            <Field as={Input} type="number" name="age" isRounded data-testid="age" />
             {errors.age && touched.age ? <div>{errors.age}</div> : null}
             <Field as={Input} type="text" name="club" placeholder="Enter player's club" isRounded />
             {errors.club && touched.club ? <div>{errors.club}</div> : null}
             <Field as={Input} type="text" name="playerImage" placeholder="Enter link to player's image" isRounded />
             {errors.playerImage && touched.playerImage ? <div>{errors.playerImage}</div> : null}
-            <Button htmlType="submit">Submit</Button>
+            <Button htmlType="submit" data-testid="submit-form">
+              Submit
+            </Button>
           </Form>
         )}
       </Formik>
     </StyledForm>
-  ) : (
-    <UnauthenticatedApp />
   );
 };
 

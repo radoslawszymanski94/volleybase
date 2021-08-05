@@ -8,6 +8,10 @@ import { useAuth } from 'auth/AuthProvider';
 import { StyledLoginForm, StyledParagraph } from './Login.styles';
 import { loginNoAccount, loginSuccess, serverError, validationMessages } from 'assets/constans';
 
+interface LoginProps {
+  onSubmit?: Function;
+}
+
 const { email, password } = validationMessages;
 
 const LoginSchema = Yup.object().shape({
@@ -15,8 +19,12 @@ const LoginSchema = Yup.object().shape({
   password: Yup.string().min(2, password.min).max(25, password.max).required(password.required)
 });
 
-const Login: FC = () => {
+const Login: FC<LoginProps> = ({ onSubmit }) => {
   const { signIn } = useAuth();
+  const handleSubmit = (values) => {
+    const { email, password } = values;
+    onSubmit ? onSubmit(values) : signIn(email, password, loginSuccess, serverError);
+  };
   return (
     <StyledLoginForm title="Log in">
       <Formik
@@ -24,10 +32,7 @@ const Login: FC = () => {
           email: '',
           password: ''
         }}
-        onSubmit={(values) => {
-          const { email, password } = values;
-          signIn(email, password, loginSuccess, serverError);
-        }}
+        onSubmit={handleSubmit}
         validationSchema={LoginSchema}
       >
         {({ touched, errors }) => (
@@ -40,7 +45,9 @@ const Login: FC = () => {
               {loginNoAccount}
               <Link to="/signup"> here</Link>.
             </StyledParagraph>
-            <Button htmlType="submit">Log in</Button>
+            <Button htmlType="submit" data-testid="sign-in">
+              Sign in
+            </Button>
           </Form>
         )}
       </Formik>

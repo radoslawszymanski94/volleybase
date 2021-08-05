@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import { Menu } from 'antd';
-import { NavLink, Link, useLocation } from 'react-router-dom';
-import { Button } from 'components/atoms/Button/Button';
+import { NavLink, Link } from 'react-router-dom';
 import { StyledButtonWrapper, StyledHeader } from './Navigation.styles';
 import { useAuth } from 'auth/AuthProvider';
 import { signoutError, signoutSuccess } from 'assets/constans';
@@ -31,7 +30,7 @@ const Navigation: FC = () => {
               Logout
             </Link>
           ) : (
-            <Link to="/login">Log in</Link>
+            <Link to="/login">Sign in</Link>
           )}
         </StyledButtonWrapper>
       </Menu>
