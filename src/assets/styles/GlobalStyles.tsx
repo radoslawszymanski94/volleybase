@@ -47,4 +47,31 @@ export const GlobalStyles = createGlobalStyle`
             color: #fff;
         }
     }
+
+    .ant-menu-submenu-popup > .ant-menu {
+        background-color: #4F555C;
+        color: #fff;
+        text-align: center;
+        font-weight: bold;
+        height: 100%;
+
+        .ant-menu-item-selected {
+            background-color: transparent;
+        }
+
+        .logo a{
+            display: block;
+            width: 100%;
+            height: 20px;
+            color: #fff;
+        }
+    }
+
+    .ant-menu-item-selected a {
+        color: #fff;
+
+        &:hover {
+            color: #fff;
+        }
+    }
 `;
