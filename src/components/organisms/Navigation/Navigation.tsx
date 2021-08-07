@@ -4,6 +4,7 @@ import { NavLink, Link } from 'react-router-dom';
 import { StyledButtonWrapper, StyledHeader } from './Navigation.styles';
 import { useAuth } from 'auth/AuthProvider';
 import { signoutError, signoutSuccess } from 'assets/constans';
+import square from 'assets/images/square.png';
 
 export interface NavigationProps {
   theme?: Object;

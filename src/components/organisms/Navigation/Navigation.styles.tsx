@@ -2,9 +2,12 @@ import styled from 'styled-components';
 import { Layout } from 'antd';
 const { Header } = Layout;
 import { NavigationProps } from './Navigation';
+import { device } from 'assets/mobile/breakpoints';
 
 export const StyledHeader = styled(Header)<NavigationProps>`
   background-color: ${({ theme }) => theme.colors.darkGray};
+
+    
 
   .ant-menu {
     background-color: ${({ theme }) => theme.colors.darkGray};
@@ -30,9 +33,13 @@ export const StyledHeader = styled(Header)<NavigationProps>`
       }
     }
 
+    .ant-menu-submenu {
+      color: white;
+      background-color: ${({ theme }) => theme.colors.hoverGray};
+    }
+
     .logo {
       margin-left: auto;
-      padding-right: 20px;
 
       button,
       a {
@@ -49,6 +56,10 @@ export const StyledHeader = styled(Header)<NavigationProps>`
           background-color: ${({ theme }) => theme.colors.mintHover};
         }
       }
+
+      @media ${device.mobile} {
+      padding-right: 20px;
+      
     }
   }
 `;
