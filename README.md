@@ -1,5 +1,5 @@
 Opis aplikacji:
-Aplikacja social-app jest bazą siatkarzy.
+Aplikacja volleybase jest bazą siatkarzy.
 
 Aplikacja oferuje:
 
