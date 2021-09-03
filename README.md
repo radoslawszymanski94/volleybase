@@ -19,6 +19,8 @@ FRONTEND
 - Axios
 - Ant
 - Storybook
+- Jest
+- React testing library
 
 BACKEND
 
